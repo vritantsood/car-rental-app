@@ -1,10 +1,54 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Title from "../components/Title";
 import assets, { dummyCarData } from "../assets/assets";
 import CarCard from "../components/CarCard";
-
+import { useSearchParams } from "react-router-dom";
+import { useAppContext } from "../context/AppContext";
+import toast from "react-hot-toast";
 const Cars = () => {
+
+  //getting search params from url
+  const [searchParams]=useSearchParams()
+  const pickupLocation=searchParams.get("pickupLocation")
+  const pickupDate=searchParams.get("pickupDate")
+  const returnDate=searchParams.get("returnDate")
+  const {cars,axios}=useAppContext()
+
+  const isSearchData=pickupLocation && pickupDate && returnDate
+  const [filteredCars,setFilteredCars]=useState([])
+
+  const applyFilter=async()=>{
+    if(input === ""){
+      setFilteredCars(cars);
+      return null;
+    }
+  }
+
+
+  const searchCarAvailability=async()=>{
+    const{data}=await axios.post("/api/bookings/check-availability",{location :pickupLocation,pickupDate,returnDate})
+    if(data.success){
+      setFilteredCars(data.availableCars)
+      if(data.availableCars.length===0){
+        toast("No cars available")
+      }
+      return null
+    }
+  }
+  useEffect(()=>{
+    isSearchData && searchCarAvailability()
+  },[])
+
+  
+
+
   const [input, setInput] = useState("");
+
+  useEffect(()=>{
+    cars.length>0 && !isSearchData && applyFilter()
+  },[input,cars])
+
+  
   const [showSidebar, setShowSidebar] = useState(false);
   const [filters, setFilters] = useState({
     seating_capacity: [],
@@ -14,7 +58,6 @@ const Cars = () => {
     location: [],
   });
   const [sortOption, setSortOption] = useState("");
-
   const handleCheckboxChange = (category, value) => {
     setFilters((prev) => {
       const current = prev[category];
@@ -42,7 +85,7 @@ const Cars = () => {
   };
 
   // Filter logic
-  const filteredCars = dummyCarData.filter((car) => {
+  const filteringCars = filteredCars.filter((car) => {
     const searchStr =
       `${car.brand} ${car.model} ${car.description}`.toLowerCase();
     const matchesSearch = searchStr.includes(input.toLowerCase());
@@ -76,7 +119,7 @@ const Cars = () => {
   });
 
   // Sort logic
-  const sortedCars = [...filteredCars].sort((a, b) => {
+  const sortedCars = [...filteringCars].sort((a, b) => {
     switch (sortOption) {
       case "price-asc":
         return a.pricePerDay - b.pricePerDay;
@@ -92,9 +135,9 @@ const Cars = () => {
   });
 
   // Extract unique locations and categories dynamically
-  const uniqueLocations = [...new Set(dummyCarData.map((car) => car.location))];
+  const uniqueLocations = [...new Set(filteredCars.map((car) => car.location))];
   const uniqueCategories = [
-    ...new Set(dummyCarData.map((car) => car.category)),
+    ...new Set(filteredCars.map((car) => car.category)),
   ];
 
   return (
@@ -270,7 +313,6 @@ const Cars = () => {
         {/* Handle no results */}
         {sortedCars.length === 0 ? (
           <div className="text-center text-gray-500 mt-10">
-            <img alt="No cars" className="mx-auto w-24 h-24 mb-4 opacity-50" />
             <p className="text-lg font-medium">No cars found</p>
           </div>
         ) : (

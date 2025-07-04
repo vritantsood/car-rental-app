@@ -78,7 +78,7 @@ export const AppProvider=({children})=>{
         navigate,currency,axios,user,setUser,token,setToken,
         isOwner,setIsOwner,fetchUser,showLogin,setShowLogin,
         logout,fetchCars,cars,setCars,pickupDate,returnDate,
-        setReturnDate
+        setReturnDate,setPickupDate
     }
     return(
         <AppContext.Provider value={value}>
