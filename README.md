@@ -3,7 +3,13 @@
 A full-stack car rental booking platform built with the MERN stack. Users can browse and book available cars, while admins can manage inventory and bookings through a dedicated dashboard. The app uses secure JWT authentication, optimized image handling with ImageKit, and is deployed for production.
 
 ---
+## 🌐 Live Demo
 
+👉 [Live Project URL](https://your-frontend.vercel.app)
+
+👉 [Backend API Base URL](https://your-backend.onrender.com)
+
+---
 ## 🔧 Tech Stack
 
 - **Frontend**: React, React Router, Axios, Tailwind CSS, React Hot Toast
@@ -34,8 +40,6 @@ A full-stack car rental booking platform built with the MERN stack. Users can br
 - 📤 Upload and optimize car images using ImageKit
 
 ---
-
-## 📷 Screenshots
 
 *(Add screenshots here using Markdown syntax)*
 
