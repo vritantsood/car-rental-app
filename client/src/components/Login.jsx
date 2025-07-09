@@ -17,7 +17,7 @@ const Login = () => {
 
             if(data.success){
                 navigate('/')
-                setToken(data.Token)
+                setToken(data.token)
                 localStorage.setItem("token",data.token)
                 setShowLogin(false)
 
