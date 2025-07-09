@@ -6,7 +6,7 @@ A full-stack car rental booking platform built with the MERN stack. Users can br
 
 ## 🔧 Tech Stack
 
-- **Frontend**: React, React Router, Axios, Tailwind CSS
+- **Frontend**: React, React Router, Axios, Tailwind CSS, React Hot Toast
 - **Backend**: Node.js, Express
 - **Database**: MongoDB (MongoDB Atlas)
 - **Authentication**: JWT (JSON Web Tokens)
@@ -19,7 +19,7 @@ A full-stack car rental booking platform built with the MERN stack. Users can br
 
 ### User
 - 🔐 Sign up & login using secure JWT authentication
-- 🚗 View all available cars by location and date
+- 🚗 View all available cars and filter them using filters
 - 📅 Book a car for a desired time slot
 - 📄 View their own bookings
 
@@ -27,13 +27,11 @@ A full-stack car rental booking platform built with the MERN stack. Users can br
 - 🧾 Access admin dashboard
 - ➕ Add new cars to inventory
 - 🗂 Manage all user bookings
-- 🗑 Delete car listings (optional)
+- 🗑 Delete or hide car listings
+- Monitor overall platform performance including total cars, bookings, revenue, and recent activities
 
 ### Additional
 - 📤 Upload and optimize car images using ImageKit
-- 📧 Email confirmation after booking *(Coming Soon)*
-- 💳 Stripe payment integration *(Coming Soon)*
-- 🌀 Smooth UI with animations *(Optional)*
 
 ---
 
