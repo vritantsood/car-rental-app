@@ -16,6 +16,7 @@ const Login = () => {
                 name,email,password})
 
             if(data.success){
+                toast.success(`Welcome back${data.user?.name ? `, ${data.user.name}` : ''}`);
                 navigate('/')
                 setToken(data.token)
                 localStorage.setItem("token",data.token)
