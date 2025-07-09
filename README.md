@@ -5,9 +5,9 @@ A full-stack car rental booking platform built with the MERN stack. Users can br
 ---
 ## 🌐 Live Demo
 
-👉 [Live Project URL](https://your-frontend.vercel.app)
+👉 [Live Project URL](https://car-rental-chi-six.vercel.app)
 
-👉 [Backend API Base URL](https://your-backend.onrender.com)
+👉 [Backend API Base URL](https://car-rental-server-hazel-sigma.vercel.app)
 
 ---
 ## 🔧 Tech Stack
