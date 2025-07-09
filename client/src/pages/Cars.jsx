@@ -12,7 +12,7 @@ const Cars = () => {
   const pickupLocation=searchParams.get("pickupLocation")
   const pickupDate=searchParams.get("pickupDate")
   const returnDate=searchParams.get("returnDate")
-  const {cars,axios}=useAppContext()
+  const {cars,axios,refreshCars}=useAppContext()
 
   const isSearchData=pickupLocation && pickupDate && returnDate
   const [filteredCars,setFilteredCars]=useState([])
@@ -47,6 +47,12 @@ const Cars = () => {
   useEffect(()=>{
     cars.length>0 && !isSearchData && applyFilter()
   },[input,cars])
+
+  
+  useEffect(() => {
+    refreshCars();
+  }, []);
+
 
   
   const [showSidebar, setShowSidebar] = useState(false);

@@ -47,6 +47,14 @@ export const AppProvider=({children})=>{
       }
     }
 
+    //Function to refresh cars when a change is made using admin dashboard
+    const refreshCars = async () => {
+    const { data } = await axios.get('/api/user/cars');
+        if (data.success) setCars(data.cars);
+    };
+
+
+
     // Function to log out the user
     const logout = () => {
         localStorage.removeItem('token')
@@ -78,7 +86,7 @@ export const AppProvider=({children})=>{
         navigate,currency,axios,user,setUser,token,setToken,
         isOwner,setIsOwner,fetchUser,showLogin,setShowLogin,
         logout,fetchCars,cars,setCars,pickupDate,returnDate,
-        setReturnDate,setPickupDate
+        setReturnDate,setPickupDate,refreshCars
     }
     return(
         <AppContext.Provider value={value}>

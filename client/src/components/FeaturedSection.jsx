@@ -4,10 +4,17 @@ import CarCard from './CarCard'
 import assets from '../assets/assets'
 import { dummyCarData } from '../assets/assets'
 import {useNavigate} from 'react-router-dom'
+import { useEffect } from 'react'
 import { useAppContext } from '../context/AppContext'
 const FeaturedSection = () => {
   const navigate = useNavigate();
-  const{cars}=useAppContext();
+  const{cars,refreshCars}=useAppContext();
+
+  useEffect(() => {
+      refreshCars();
+  }, []);
+
+  
   return (
     <div className='flex flex-col items-center py-24 px-6 md:px-16 lg:px-24 xl:px-32'>
 
