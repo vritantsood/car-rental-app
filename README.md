@@ -40,11 +40,3 @@ A full-stack car rental booking platform built with the MERN stack. Users can br
 - 📤 Upload and optimize car images using ImageKit
 
 ---
-
-*(Add screenshots here using Markdown syntax)*
-
-```md
-![Home Page](screenshots/home.png)
-![Booking Page](screenshots/booking.png)
-![Admin Dashboard](screenshots/admin.png)
-
